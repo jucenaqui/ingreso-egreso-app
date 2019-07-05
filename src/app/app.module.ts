@@ -1,5 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+// firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -12,6 +18,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { AppRoutinModule } from './app-routing';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +35,11 @@ import { AppRoutinModule } from './app-routing';
   ],
   imports: [
     BrowserModule,
-    AppRoutinModule
+    AppRoutinModule,
+    FormsModule,
+    AngularFireModule.initializeApp( environment.firebase ),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
